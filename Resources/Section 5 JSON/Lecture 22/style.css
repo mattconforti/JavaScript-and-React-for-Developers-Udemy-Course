@@ -1,12 +1,13 @@
 #leftside, #rightside {
   float: left;
-  width: 50%;
+  width: 49%;
+  height: 700px;
 }
 
 h1 {
-  padding-left: 5px;
   font-size: 2.25em;
-  /* fix spacing of this and inputdiv to match vertical spacing of rightside */
+  margin-top: 225px;
+  margin-left: 22%;
 }
 
 #in1 {
@@ -21,7 +22,7 @@ h1 {
 #inputdiv {
   float: left;
   width: 250px;
-  padding-left: 42px;
+  margin-left: 30%;
 }
 
 img {
