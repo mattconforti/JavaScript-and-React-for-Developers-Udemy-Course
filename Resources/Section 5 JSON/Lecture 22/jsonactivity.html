@@ -2,12 +2,26 @@
 <html>
 <head>
   <title>JSON GitHub Activity</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>JSON Activity</h1>
-    <p>Open up the console :)</p>
-    <div id="username"></div>
+  <div id="leftside">
+    <h1>GitHub Profile Viewer</h1>
+    <div id="inputdiv">
+      <input type="text" id="in1" name="input1" placeholder="GitHub Username">
+      <button id="b1">Search</button>
+    </div>
+  </div>
+  <div id="rightside">
+    <!-- make a "card" around the display? using box-shadow -->
+    <img src="" id="avatarElem" alt="GitHub Profile Image">
+    <div id="profileDisplay">
+      <div id="username"></div>
+      <div id="realname"></div>
+      <div id="location"></div>
+      <div id="bio"></div>
+      <div id="followers"></div>
+    </div>
   </div>
   <script src="jsonhandling.js"></script>
 </body>
