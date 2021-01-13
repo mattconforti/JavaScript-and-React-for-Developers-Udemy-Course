@@ -6,6 +6,9 @@
 
 #leftside {
   border-right: 2px solid grey;
+  /* align this separator to be more in the middle
+     (there is more space on the right side than the left)
+  */
 }
 
 h1 {
@@ -30,8 +33,25 @@ h1 {
 }
 
 img {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: 110px;
+}
+
+ul {
+  padding: 0;
+  margin-left: -25px;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;  /* takes off bullets */
+  overflow: hidden;  /* hide some of the list items if they flow out of the box */
+  /* reason for this -- cant possibly fit every single follower in this small area.
+     can make a bigger area to display followers in the future
+  */
+}
+
+li img {  /* img inside a list item */
+  width: 20px;
+  margin: 5px;
 }
 
 #profileDisplay {
