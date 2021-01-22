@@ -58,9 +58,8 @@ function showFollowers(listOfFollowers) {
   listOfFollowers.forEach(function(f) {
     var listItem = document.createElement('li');
     listItem.innerHTML = '<a href="' + f.html_url + '">' +  // make link to github page of user
-    '<img src="' + f.avatar_url + '" alt="' + f.login +'">' + // put their avatar img in a list item
+    '<img src="' + f.avatar_url + '" alt="' + f.login +'">' + // put their avatar img in a list item inside link
     '</a>';
-    // make the above list item clickable (add a link -  to the persons github page when u click the picture)
     document.getElementById("fUl").appendChild(listItem); // add the list item to the existing list
   });
 }
