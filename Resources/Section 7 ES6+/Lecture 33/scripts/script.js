@@ -1,9 +1,12 @@
 document.getElementById('search_b').addEventListener('click', (e) => {
     // get value of search box to query API
     const searchTerm = document.getElementById('in1').value;
+    // clean this value ^ and make sure no sql injection/malicious stuff??
     // if the search term exists (is not ""), use fetch API to search
     if (searchTerm) {
         fetch(`https://images-api.nasa.gov/search?q=${searchTerm}`)
+        // need more search parameters ^^ to only search for images etc????
+        // look at documentation under search section!!!
             .then(response => {
                 if (response.status === 200) {
                     return response.json();
@@ -11,7 +14,29 @@ document.getElementById('search_b').addEventListener('click', (e) => {
             })
             .then(data => {
                 console.log(data);
-                // destructure data & assign to elements on our page
+                // destructure & parse thru data  - WILL PROBABLY NEED TO REFACTOR 
+                // - must be an easier/more efficient way to parse thru this INTENSE ASS JSON
+                // (but instructor wants us to use destructuring)
+                const {collection} = data; // get collection property
+                const {href: path, items} = collection;
+                console.log(path);
+                // use first 10 results
+                const [result1,result2,result3,result4,result5,result6,result7,result8,result9,result10] = items;
+                // store the results in an array for easier manipulation (looping thru)
+                const resultArr = [];
+                resultArr.push(result1, result2, result3, result4, result5, result6, result7, result8, result9, result10);
+                console.log(resultArr);
+                // get the image links for each result
+                // create an array to store image hrefs
+                const linkArr = [];
+                for (const element of resultArr) {
+                    // get link from links arr (usually 1 elem arr)
+                    var link = element.links[0];
+                    linkArr.push(link.href);
+                }
+                console.log(linkArr);
+                // replace thumbnail with original pictures (by changing end of url to ~orig.jpg)
+                // assign image paths in the array to empty img elements on our page
             })
             // catch any errors - 400 & 500 level client/server http status codes
             // (rejected promises)
