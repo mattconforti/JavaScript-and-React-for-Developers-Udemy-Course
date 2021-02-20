@@ -1,7 +1,16 @@
+// hide the img elements
+let imgList = document.getElementsByClassName("nasa_img");
+for (let im of imgList) {
+    im.style.display = "none";
+}
+
+// on search button click
 document.getElementById('search_b').addEventListener('click', (e) => {
     // get value of search box to query API
     const searchTerm = document.getElementById('in1').value;
     // clean this value ^ and make sure no sql injection/malicious stuff??
+
+
     // if the search term exists (is not ""), use fetch API to search
     if (searchTerm) {
         fetch(`https://images-api.nasa.gov/search?q=${searchTerm}`)
@@ -28,17 +37,33 @@ document.getElementById('search_b').addEventListener('click', (e) => {
                 console.log(resultArr);
                 // get the image links for each result
                 // create an array to store image hrefs
-                const linkArr = [];
+                let linkArr = [];
                 for (const element of resultArr) {
                     // get link from links arr (usually 1 elem arr)
                     var link = element.links[0];
                     linkArr.push(link.href);
                 }
-                console.log(linkArr);
+
+                // THIS CODE DOESNT WORK! IT DOES BUT IT DOESNT MAKE THE IMGS GET POPULATED WITH
+                // ORIGINAL PICS
                 // replace thumbnail with original pictures (by changing end of url to ~orig.jpg)
-                // assign image paths in the array to empty img elements on our page
+                // for (let l of linkArr) {
+                //    l = l.replace("thumb", "orig");
+                //   console.log(l);
+                //}
+
+                // put images display back to normal (not hidden)
+                for (let ima of imgList) {
+                    ima.style.display = "initial";
+                }
+
+                // assign image paths to empty img elements on our page
+                for (let i=0; i<imgList.length; i++) {
+                    imgList[i].src = linkArr[i]; // assign the src property here accordingly
+                    console.log(imgList[i].src);
+                }
             })
-            // catch any errors - 400 & 500 level client/server http status codes
+            // catch any http errors - 400 & 500 level client/server http status codes
             // (rejected promises)
             .catch(error => console.log(error.message));
     }
