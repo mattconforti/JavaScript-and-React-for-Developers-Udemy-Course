@@ -5,9 +5,9 @@ for (let im of imgList) {
 }
 
 // on search button click
-document.getElementById('search_b').addEventListener('click', (e) => {
+document.getElementById("search_b").addEventListener("click", (e) => {
     // get value of search box to query API
-    const searchTerm = document.getElementById('in1').value;
+    const searchTerm = document.getElementById("in1").value;
     // clean this value ^ and make sure no sql injection/malicious stuff??
 
 
@@ -52,16 +52,22 @@ document.getElementById('search_b').addEventListener('click', (e) => {
                 //   console.log(l);
                 //}
 
-                // put images display back to normal (not hidden)
-                for (let ima of imgList) {
-                    ima.style.display = "initial";
-                }
-
                 // assign image paths to empty img elements on our page
                 for (let i=0; i<imgList.length; i++) {
+                    // put images display back to normal (not hidden)
+                    imgList[i].style.display = "initial";
                     imgList[i].src = linkArr[i]; // assign the src property here accordingly
                     console.log(imgList[i].src);
                 }
+
+                // save users search & results using localstorage
+                var myLocStor = window.localStorage;
+                myLocStor.setItem(searchTerm, linkArr); // set key as search term, value as image paths
+                console.log(myLocStor);
+                // create search history option element, set its value, add it to DOM
+                var optionNode = document.createElement("option");
+                optionNode.value = searchTerm;
+                document.getElementById("search_dataList").appendChild(optionNode);
             })
             // catch any http errors - 400 & 500 level client/server http status codes
             // (rejected promises)

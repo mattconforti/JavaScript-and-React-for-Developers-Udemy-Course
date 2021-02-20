@@ -12,7 +12,10 @@
   <body>
     <div id="search_box">
       <h1>NASA Image Search</h1>
-      <input type="text" id="in1" name="input1" placeholder="NASA Image">
+      <input type="text" id="in1" name="input1" placeholder="NASA Image" list="search_dataList">
+      <datalist id="search_dataList">
+        <!-- populate this list with options using search history in JS -->
+      </datalist>
       <button id="search_b">Search</button>
     </div>
     <div id= "picture_box">
