@@ -3,9 +3,11 @@ let imgList = document.getElementsByClassName("nasa_img");
 for (let im of imgList) {
     im.style.display = "none";
 }
+// define global caption array
+var captionArr = [];
 
 // on search button click
-document.getElementById("search_b").addEventListener("click", (e) => {
+document.getElementById("search_b").addEventListener("click", () => {
     // get value of search box to query API
     const searchTerm = document.getElementById("in1").value;
     // clean this value ^ and make sure no sql injection/malicious stuff??
@@ -35,14 +37,16 @@ document.getElementById("search_b").addEventListener("click", (e) => {
                 const resultArr = [];
                 resultArr.push(result1, result2, result3, result4, result5, result6, result7, result8, result9, result10);
                 console.log(resultArr);
-                // get the image links for each result
-                // create an array to store image hrefs
+                // get the image links (& captions) for each result
+                // create an array to store image hrefs & captions
                 let linkArr = [];
                 for (const element of resultArr) {
-                    // get link from links arr (usually 1 elem arr)
+                    // get link from links arr (1 elem arr)
                     var link = element.links[0];
                     linkArr.push(link.href);
+                    captionArr.push(element.data[0].description);
                 }
+                console.log(captionArr);
 
                 // THIS CODE DOESNT WORK! IT DOES BUT IT DOESNT MAKE THE IMGS GET POPULATED WITH
                 // ORIGINAL PICS
@@ -74,3 +78,13 @@ document.getElementById("search_b").addEventListener("click", (e) => {
             .catch(error => console.log(error.message));
     }
 });
+// get list of figcaptions to add text to
+let figCaps = document.getElementsByTagName("figcaption");
+
+// for every image
+for (let imag=0; imag<imgList.length; imag++) {
+    imgList[imag].addEventListener("mouseover", () => {  // on mouseover
+        figCaps[imag].innerText = captionArr[imag];  // assign correct caption
+        console.log("MOUSED OVER!!");
+    });
+}

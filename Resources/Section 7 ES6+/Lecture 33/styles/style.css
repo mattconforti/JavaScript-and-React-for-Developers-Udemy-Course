@@ -17,3 +17,13 @@ h1 {
   width: 400px;
   height: 400px;
 }
+
+#picture_box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+figure {
+  margin-right: 5px;
+}
