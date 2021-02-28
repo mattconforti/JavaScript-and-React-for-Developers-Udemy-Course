@@ -78,13 +78,10 @@ document.getElementById("search_b").addEventListener("click", () => {
             .catch(error => console.log(error.message));
     }
 });
-// get list of figcaptions to add text to
-let figCaps = document.getElementsByTagName("figcaption");
 
-// for every image
-for (let imag=0; imag<imgList.length; imag++) {
-    imgList[imag].addEventListener("mouseover", () => {  // on mouseover
-        figCaps[imag].innerText = captionArr[imag];  // assign correct caption
-        console.log("MOUSED OVER!!");
-    });
+// add mouseover and mouseout event listeners to each image
+
+for(let im of imgList) {
+    im.addEventListener('mouseover', () => im.style.opacity = ".5");
+    im.addEventListener('mouseout', () => im.style.opacity = "1");
 }
