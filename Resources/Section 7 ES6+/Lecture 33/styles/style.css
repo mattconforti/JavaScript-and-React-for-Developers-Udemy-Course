@@ -16,14 +16,12 @@ h1 {
 .nasa_img {
   width: 400px;
   height: 400px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 #picture_box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-
-figure {
-  margin-right: 5px;
 }
