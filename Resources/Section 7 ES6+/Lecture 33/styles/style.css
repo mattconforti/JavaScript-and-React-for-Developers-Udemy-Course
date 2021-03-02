@@ -16,12 +16,34 @@ h1 {
 .nasa_img {
   width: 400px;
   height: 400px;
-  margin-right: 5px;
-  margin-bottom: 5px;
 }
 
 #picture_box {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.img_container {
+  position: relative;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.img_caption {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+/* fix the fact that the caption on hover goes 1px over the bottom of the image
+(caption area is slightly larger vertically than the container its in)
+*/
+
+.img_caption p {
+  text-align: center;
+  color: #fff;
 }
