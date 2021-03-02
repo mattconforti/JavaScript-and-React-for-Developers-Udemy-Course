@@ -35,8 +35,12 @@ h1 {
   width: 100%;
   height: 100%;
   bottom: 1px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.625);
   opacity: 0;
+  transition: all 300ms ease-in-out;
+  overflow: scroll;
+  /* we shouldnt need this!! should not overflow horizontally (but vertical is ok)
+  */
 }
 
 /* fix the fact that the caption on hover goes 1px over the bottom of the image
@@ -46,4 +50,13 @@ h1 {
 .img_caption p {
   text-align: center;
   color: #fff;
+  position: absolute;
+  top: 39%;
+  padding-right: 10px;
+  padding-left: 10px;
 }
+
+/* also fix problem with 8th caption for 'milky way' where it 
+  cuts off part of the text (b/c of absolute positioning?? idk. every other
+  caption makes line breaks automatically where necessary
+*/

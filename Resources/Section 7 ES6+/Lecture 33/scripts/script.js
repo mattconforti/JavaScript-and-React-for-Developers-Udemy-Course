@@ -3,8 +3,6 @@ let imgList = document.getElementsByClassName("nasa_img");
 for (let im of imgList) {
     im.style.display = "none";
 }
-// define global caption array
-var captionArr = [];
 
 // on search button click
 document.getElementById("search_b").addEventListener("click", () => {
@@ -40,6 +38,7 @@ document.getElementById("search_b").addEventListener("click", () => {
                 // get the image links (& captions) for each result
                 // create an array to store image hrefs & captions
                 let linkArr = [];
+                let captionArr = [];
                 for (const element of resultArr) {
                     // get link from links arr (1 elem arr)
                     var link = element.links[0];
@@ -47,7 +46,6 @@ document.getElementById("search_b").addEventListener("click", () => {
                     captionArr.push(element.data[0].description);
                 }
                 console.log(captionArr);
-                // TODO: assign each caption to its respective p element
 
                 // THIS CODE DOESNT WORK! IT DOES BUT IT DOESNT MAKE THE IMGS GET POPULATED WITH
                 // ORIGINAL PICS
@@ -63,6 +61,12 @@ document.getElementById("search_b").addEventListener("click", () => {
                     imgList[i].style.display = "initial";
                     imgList[i].src = linkArr[i]; // assign the src property here accordingly
                     console.log(imgList[i].src);
+                }
+
+                // assign each caption to its respective p element
+                let captionPs = document.getElementsByTagName("p");
+                for (let p=0; p<captionPs.length; p++) {
+                    captionPs[p].innerText = captionArr[p];
                 }
 
                 // save users search & results using localstorage
