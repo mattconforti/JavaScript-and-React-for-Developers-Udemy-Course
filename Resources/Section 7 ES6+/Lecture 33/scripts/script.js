@@ -47,6 +47,7 @@ document.getElementById("search_b").addEventListener("click", () => {
                     captionArr.push(element.data[0].description);
                 }
                 console.log(captionArr);
+                // TODO: assign each caption to its respective p element
 
                 // THIS CODE DOESNT WORK! IT DOES BUT IT DOESNT MAKE THE IMGS GET POPULATED WITH
                 // ORIGINAL PICS
@@ -79,9 +80,10 @@ document.getElementById("search_b").addEventListener("click", () => {
     }
 });
 
-// add mouseover and mouseout event listeners to each image
+// add mouseover and mouseout event listeners to each image caption
+let captionElems = document.getElementsByClassName('img_caption');
 
-for(let im of imgList) {
-    im.addEventListener('mouseover', () => im.style.opacity = ".5");
-    im.addEventListener('mouseout', () => im.style.opacity = "1");
+for(let ca of captionElems) {
+    ca.addEventListener('mouseover', () => ca.style.opacity = "1");
+    ca.addEventListener('mouseout', () => ca.style.opacity = "0");
 }
