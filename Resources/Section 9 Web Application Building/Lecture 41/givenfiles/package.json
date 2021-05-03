@@ -1,0 +1,16 @@
+{
+  "name": "tomato_tapper",
+  "version": "1.0.0",
+  "description": "first Gulp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Conforti",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.3.0",
+    "grunt-contrib-uglify": "^5.0.1",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}
